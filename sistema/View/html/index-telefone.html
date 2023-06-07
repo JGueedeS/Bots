@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro Endereço | Bots</title>
+     <!--Icone do title-->
+     <link rel="icon" href="../assets/img/logo_sem_nome.png">
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
+    <!--Link para o css da pag-->
+    <link rel="stylesheet" href="../style/css/css-telefone/telefone.css">
+    <!--Link para o background de estrelas-->
+    <link rel="stylesheet" href="../style/css/estrelas-background.css">
+    <!--Link para o javascript da página-->
+    <script src="../../js/telefone.js" defer></script>
+  <body id="checkout-page">
+     <!-- Estralas do fundo -->
+     <section class="wrapper">
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+    </section>
+    <!--Mensagem box da página-->
+    <div id="fade" class="hide">
+      <div id="loader" class="spinner-border text-info hide" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div id="message" class="hide">
+        <div class="alert alert-light" role="alert">
+          <h4 style="color: red;">Aviso</h4>
+          <p></p>
+          <button type="button" class="btn btn-primary"><a href="index-endereco.html" style="text-decoration: none; color: white;">Continuar</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="order-form-container" class="container p-6 my-md-4 px-md-0">
+      
+      <div id="form-header">
+        <h2>Cadastre o número de telefone</h2>
+        <p>Preencha os campos para sabermos mais de você</p>
+      </div>
+      <form id="address-form" action="../../Controller/php/cadastro-usuario/envio-telefone.php" method="POST" enctype="multipart/form-data">
+        
+        <div class="row mb-3">
+          
+          <div class="col-12 col-sm-6 form-floating">
+            <select
+              class="form-select shadow-none"
+              id="tipo"
+              required
+              data-input
+              name="tipo"
+            >
+              <option value="" disabled selected>Selecione o tipo de telefone</option>
+              <option value="Celular" name="celular">Celular</option>
+              <option value="Fixo" name="fixo">Telefone Fixo</option>
+              <option value="Ramal" name="ramal">Ramal</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 mb-3 mb-md-0 form-floating">
+            <input
+              type="text"
+              class="form-control shadow-none"
+              id="address"
+              name="ddd"
+              placeholder="DDD"
+              required
+              data-input
+            />
+            <label for="address">DDD</label>
+          </div>
+        </div>
+        <div class="row mb-3">
+            <input type="hidden" name="id_endereco">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control shadow-none"
+                id="telefone"
+                name="telefone"
+                placeholder="Digite o seu Telefone"
+                maxlength="9"
+                minlength="9"
+                required
+              />
+              <label for="telefone">Digite o seu Telefone</label>
+            </div>
+        </div>
+      
+       
+        <div class="d-flex justify-content-end">
+          <button id="save-btn" type="submit" class="btn btn-primary">
+            Cadastrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

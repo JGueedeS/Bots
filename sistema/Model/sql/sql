@@ -1,0 +1,69 @@
+DROP DATABASE if EXISTS login;
+CREATE DATABASE login;
+USE login;
+CREATE TABLE usuarios (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    nivel INT(1) UNSIGNED NOT NULL DEFAULT '1',
+    ativo BOOL NOT NULL DEFAULT '1',
+    codigo VARCHAR(50) NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY email_unico (email),
+    KEY nivel_usuario (nivel)
+);
+
+CREATE TABLE enderecos (
+    id_endereco INT(11) NOT NULL AUTO_INCREMENT,
+    rua VARCHAR(100) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    complemento VARCHAR(100) NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    cep VARCHAR(8) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_endereco)
+);
+
+CREATE TABLE telefones (
+    id_telefone INT(11) NOT NULL AUTO_INCREMENT,
+    tipo VARCHAR(20) NULL,
+    ddd VARCHAR(3) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_telefone)
+);
+
+ALTER TABLE telefones
+ADD CONSTRAINT uc_telefone_unico UNIQUE (DDD, telefone);
+
+
+CREATE TABLE perfis (
+    id_usuario INT(11) NOT NULL AUTO_INCREMENT,
+    foto_perfil VARCHAR(255),
+    updated_at DATETIME NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_usuario)
+);
+
+ALTER TABLE enderecos
+ADD COLUMN usuario_id INT(11) NOT NULL,
+ADD CONSTRAINT fk_enderecos_usuarios
+    FOREIGN KEY (usuario_id)
+    REFERENCES usuarios (id)
+    ON DELETE CASCADE;
+
+ALTER TABLE telefones
+ADD COLUMN usuario_id INT(11) NOT NULL,
+ADD CONSTRAINT fk_telefones_usuarios
+    FOREIGN KEY (usuario_id)
+    REFERENCES usuarios (id)
+    ON DELETE CASCADE;
+    
+/*Usuarios de teste*/
+INSERT INTO usuarios (nome, email, senha, nivel, ativo) VALUES ('Usuário Teste', 'usuario@demo.com.br', '12345', 1, 1);
+INSERT INTO usuarios (nome, email, senha, nivel, ativo) VALUES ('Administrador Teste', 'admin@demo.com.br', 'ADMIN', 2, 1);
