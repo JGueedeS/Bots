@@ -38,6 +38,7 @@ CREATE TABLE telefones (
     PRIMARY KEY (id_telefone)
 );
 
+
 ALTER TABLE telefones
 ADD CONSTRAINT uc_telefone_unico UNIQUE (DDD, telefone);
 
@@ -67,3 +68,93 @@ ADD CONSTRAINT fk_telefones_usuarios
 /*Usuarios de teste*/
 INSERT INTO usuarios (nome, email, senha, nivel, ativo) VALUES ('Usuário Teste', 'usuario@demo.com.br', '12345', 1, 1);
 INSERT INTO usuarios (nome, email, senha, nivel, ativo) VALUES ('Administrador Teste', 'admin@demo.com.br', 'ADMIN', 2, 1);
+
+
+CREATE TABLE videos (
+    id_video INT(11) NOT NULL AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    PRIMARY KEY (id_video)
+);
+INSERT INTO videos (titulo, descricao) VALUES ('Video 1', 'Descrição do vídeo 1');
+
+CREATE TABLE fases (
+    id_fase INT(11) NOT NULL AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    PRIMARY KEY (id_fase)
+);
+
+CREATE TABLE progresso_usuario (
+    id_progresso INT(11) NOT NULL AUTO_INCREMENT,
+    usuario_id INT(11) NOT NULL,
+    video_id INT(11) NOT NULL,
+    fase_id INT(11) NOT NULL,
+    concluido BOOL NOT NULL DEFAULT '0',
+    PRIMARY KEY (id_progresso),
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios (id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (video_id)
+        REFERENCES videos (id_video)
+        ON DELETE CASCADE,
+    FOREIGN KEY (fase_id)
+        REFERENCES fases (id_fase)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE questionarios (
+    id_questionario INT(11) NOT NULL AUTO_INCREMENT,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    PRIMARY KEY (id_questionario)
+);
+
+CREATE TABLE respostas (
+    id_resposta INT(11) NOT NULL AUTO_INCREMENT,
+    usuario_id INT(11) NOT NULL,
+    questionario_id INT(11) NOT NULL,
+    resposta TEXT,
+    PRIMARY KEY (id_resposta),
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios (id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (questionario_id)
+        REFERENCES questionarios (id_questionario)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE imagens (
+    id_imagem INT(11) NOT NULL AUTO_INCREMENT,
+    nome_arquivo VARCHAR(255) NOT NULL,
+    caminho_arquivo VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_imagem)
+);
+
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('a.png', 'sistema/View/assets/img-icone/a.png');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('b.png', 'sistema/View/assets/img-icone/a.png');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('c.png', 'sistema/View/assets/img-icone/a.png');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('d.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('e.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('f.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('g.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('h.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('i.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('j.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('k.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('l.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('m.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('n.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('o.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('p.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('q.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('r.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('s.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('t.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('u.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('v.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('w.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('x.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('y.png', 'sistema/para/a/pasta/imagem1.jpg');
+INSERT INTO imagens (nome_arquivo, caminho_arquivo) VALUES ('z.png', 'sistema/para/a/pasta/imagem1.jpg');
+

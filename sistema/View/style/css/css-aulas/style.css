@@ -366,17 +366,6 @@ body {
   margin-left: -3px !important;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  height: 100vh;
-  font-family: "Poppins", sans-serif;
-  color: #3f4750;
-  font-size: 0.9rem;
-}
 
 a {
   text-decoration: none;

@@ -17,13 +17,13 @@
   --black2: #999;
 }
 
-body {
+#body {
   max-width: 100%;
   height: auto;
     
 }
 
-.container {
+.container1 {
   position: relative;
   width: 100%;
 }
@@ -57,16 +57,17 @@ body {
 
 .navigation ul li {
   position: relative;
-  width: 100%;
+  width: 109%;
   list-style: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
-  margin-left: 10px;
+  margin-left: -22px;
 }
 
 .navigation ul li:hover,
 .navigation ul li.hovered {
   background-color: var(--white);
+  
 }
 
 .navigation ul li:nth-child(1) {
@@ -99,7 +100,7 @@ body {
   font-size: 1.75rem;
 }
 
-.navigation ul li a .title {
+.navigation ul li a .title-slidebar {
   position: relative;
   display: block;
   padding: 0 10px;
@@ -108,7 +109,9 @@ body {
   text-align: start;
   white-space: nowrap;
 }
+
 /*icon*/
+
 
 /* --------- curve outside ---------- */
 .navigation ul li:hover a::before,
@@ -190,15 +193,32 @@ body {
   object-fit: cover;
 }
 
+.btn-salvar{
+  border: 1px solid #69088f;
+  width: 20vh;
+  height: 6vh;
+  background: none;
+  border-radius: 5px;
+  color: #4f1964;
+}
+
+.btn-salvar:hover{
+  background-color: #4f1964;
+  color: white;
+  transition: 0.2s;
+}
+
 /* ======================= Title minha conta ====================== */
-.title-minha-conta{
+.title-minha-conta>a{
   margin-top: 7vh;
   margin-left: 20px;
   padding-right: 15px;
+  color: #69088f;
 }
 
 .title-minha-conta>a:hover{
   text-decoration: none;
+  color: #69088f;
 }
 
 
@@ -250,6 +270,9 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
 }
 .card{
   width: 60vh;
+  margin-right: 15vh;
+  margin-left: -15vh;
+  gap: 40px;
 }
 .cardBox > a{
   text-decoration: none;
@@ -470,6 +493,12 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
 }
 .recentCustomers table tr:hover td h4 span {
   color: var(--white);
+}
+
+.btn{
+  margin-top: 10vh;
+  margin-left: 1000px;
+  position: relative;
 }
 
 /* ====================== Responsive Design ========================== */

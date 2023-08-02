@@ -1,19 +1,19 @@
-// 'use strict'
+'use strict'
 
-// const loginContainer = document.getElementById('login-container')
+const loginContainer = document.getElementById('login-container')
 
-// const moveOverlay = () => loginContainer.classList.toggle('move')
+const moveOverlay = () => loginContainer.classList.toggle('move')
 
-// document.getElementById('open-register').addEventListener('click', moveOverlay)
-// document.getElementById('open-login').addEventListener('click', moveOverlay)
+document.getElementById('open-register').addEventListener('click', moveOverlay)
+ document.getElementById('open-login').addEventListener('click', moveOverlay)
 
-// document.getElementById('open-register-mobile').addEventListener('click', moveOverlay)
-// document.getElementById('open-login-mobile').addEventListener('click', moveOverlay)
+document.getElementById('open-register-mobile').addEventListener('click', moveOverlay)
+document.getElementById('open-login-mobile').addEventListener('click', moveOverlay)
 
-// function preventBack() {
-//     window.history.forward(); 
-// }
+ function preventBack() {
+    window.history.forward(); 
+ }
   
-// setTimeout("preventBack()", 0);
+setTimeout("preventBack()", 0);
   
-// window.onunload = function() { null };
+window.onunload = function() { null };
